@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title text-primary">{{ author.first_name }} {{ author.last_name }}</h2>
+            <p class="card-text text-muted">Date de naissance : <strong>{{ author.birth_date }}</strong></p>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h4 class="mb-3">📚 Livres</h4>
+        {% if books %}
+        <ul class="list-group">
+            {% for book in books %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span><strong>{{ book.title }}</strong></span>
+                <span class="badge bg-secondary">{{ book.publication_date }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="alert alert-info mt-3" role="alert">
+            Aucun livre trouvé pour cet auteur.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
